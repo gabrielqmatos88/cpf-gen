@@ -19,32 +19,34 @@
 </head>
 
 <body>
-  <div id="app" style="width: 80%; margin: 0 auto;">
-    <div class="card mt-4 p-3">
-      <div class="d-flex flex-column">
-        <label>CPF de teste</label>
-        <small>Apenas os 9 primeiros dígitos</small>
-        <div class="d-flex justify-content-between">
-          <input type="text" :value="cpf9" @input="numberOnly($event)" maxlength="9">
-          <div class="d-flex" style="gap: 10px">
-            <input class="form-control" style="width: 100px" type="number" min="2" v-model="nr" />
-            <button class="btn btn-secondary" @click="generateCpfs()">
-              Gerar {{nr}} CPF(s)
-            </button>
+  <div class="container">
+    <div id="app" style="width: 80%; margin: 0 auto;">
+      <div class="card mt-4 p-3">
+        <div class="d-flex flex-column">
+          <label>CPF de teste</label>
+          <small>Apenas os 9 primeiros dígitos</small>
+          <div class="d-flex justify-content-between">
+            <input type="text" :value="cpf9" @input="numberOnly($event)" maxlength="9">
+            <div class="d-flex" style="gap: 10px">
+              <input class="form-control" style="width: 100px" type="number" min="2" v-model="nr" />
+              <button class="btn btn-secondary" @click="generateCpfs()">
+                Gerar {{nr}} CPF(s)
+              </button>
+            </div>
+            <!-- <span v-if="result.cpf"> {{result.cpf}}-<strong>{{result.digits}}</strong></span> -->
           </div>
-          <!-- <span v-if="result.cpf"> {{result.cpf}}-<strong>{{result.digits}}</strong></span> -->
+          <h5 class="mt-2" v-if="cpf9.length === 9">
+            Cpf de teste
+          </h5>
+          <cpf v-if="cpf9.length === 9" :value="cpf9"></cpf>
+          <h5 class="mt-2" v-if="list.cpfs.length">
+            Lista cpfs ({{list.cpfs.length}})
+          </h5>
+          <cpf v-for="(c,i) in list.cpfs" :key="c.id" :pos="i" :value="c.val"></cpf>
+          <!-- <div class="d-flex mt-2" v-if="cpf9.length === 9">
+               <strong>Soma:</strong>&nbsp{{result.sumStr}} = <strong>{{result.sum}}</strong>
+             </div> -->
         </div>
-        <h5 class="mt-2" v-if="cpf9.length === 9">
-          Cpf de teste
-        </h5>
-        <cpf v-if="cpf9.length === 9" :value="cpf9"></cpf>
-        <h5 class="mt-2" v-if="list.cpfs.length">
-          Lista cpfs ({{list.cpfs.length}})
-        </h5>
-        <cpf v-for="(c,i) in list.cpfs" :key="c.id" :pos="i" :value="c.val"></cpf>
-        <!-- <div class="d-flex mt-2" v-if="cpf9.length === 9">
-             <strong>Soma:</strong>&nbsp{{result.sumStr}} = <strong>{{result.sum}}</strong>
-           </div> -->
       </div>
     </div>
   </div>
