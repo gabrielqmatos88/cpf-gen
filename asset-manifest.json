@@ -1,0 +1,13 @@
+{
+    "files": {
+      "css/bootstrap.min.css": "./css/bootstrap.min.css",
+      "js/scripts.js": "/js/script.js",
+      "js/vue.min.js": "/js/vue.min.js",
+      "index.html": "/index.html"
+    },
+    "entrypoints": [
+      "js/vue.min.js",
+      "css/bootstrap.min.css",
+      "js/scripts.js"
+    ]
+  }
