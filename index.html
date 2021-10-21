@@ -14,26 +14,31 @@
     .diferente {
       color: red;
     }
+    h5 {
+      padding-bottom: 10px;
+      border-bottom: 1px solid #eee;
+    }
   </style>
   <link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
 
 <body>
   <div class="container">
-    <div id="app" style="width: 80%; margin: 0 auto;">
+    <div id="app">
       <div class="card mt-4 p-3">
-        <div class="d-flex flex-column">
-          <label>CPF de teste</label>
-          <small>Apenas os 9 primeiros dígitos</small>
-          <div class="d-flex justify-content-between">
-            <input type="text" :value="cpf9" @input="numberOnly($event)" maxlength="9">
-            <div class="d-flex" style="gap: 10px">
-              <input class="form-control" style="width: 100px" type="number" min="2" v-model="nr" />
-              <button class="btn btn-secondary" @click="generateCpfs()">
+        <div class="row">
+          <div class="col-12 col-md-6">
+            <label class="d-block">CPF de teste</label>
+            <small class="d-block">Apenas os 9 primeiros dígitos</small>
+            <input class="form-control" type="text" :value="cpf9" @input="numberOnly($event)" maxlength="9">
+          </div>
+          <div class="col-12 col-md-6">
+            <label class="d-block">&nbsp;</label>
+            <small class="d-block">&nbsp;</small>
+              <input class="form-control d-inline-block" style="width: 100px" type="number" min="2" v-model="nr" />
+              <button class="btn btn-secondary d-inline-block" @click="generateCpfs()">
                 Gerar {{nr}} CPF(s)
               </button>
-            </div>
-            <!-- <span v-if="result.cpf"> {{result.cpf}}-<strong>{{result.digits}}</strong></span> -->
           </div>
           <h5 class="mt-2" v-if="cpf9.length === 9">
             Cpf de teste
